@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uji TKA SD/MI - Bahasa Inggris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-light: #8A85FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --dark: #2A2D3E;
+            --darker: #1F2232;
+            --light: #F5F7FF;
+            --gray: #A0A3BD;
+            --success: #4CAF50;
+            --danger: #F44336;
+            --warning: #FF9800;
+            --info: #2196F3;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            animation: slideUp 0.8s ease;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-screen, .quiz-screen, .results-screen {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, var(--secondary), #FF8FA3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 101, 132, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, var(--success), #66BB6A);
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, var(--danger), #EF5350);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 8px 20px rgba(244, 67, 54, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .welcome-content {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .welcome-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .welcome-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .question-counter {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .progress-container {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+        }
+
+        .stimulus {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .stimulus h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .options-container {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        .option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-marker {
+            background: var(--primary);
+            color: white;
+        }
+
+        .option-text {
+            flex: 1;
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .results-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .score-container {
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: conic-gradient(var(--primary) 0%, var(--dark) 0%);
+            position: relative;
+            box-shadow: 0 0 30px rgba(108, 99, 255, 0.3);
+            transition: background 1.5s ease;
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            background: var(--darker);
+            border-radius: 50%;
+        }
+
+        .score-text {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .score-percentage {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--light);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .score-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .score-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .score-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .score-card.correct i {
+            color: var(--success);
+        }
+
+        .score-card.incorrect i {
+            color: var(--danger);
+        }
+
+        .score-card.unanswered i {
+            color: var(--warning);
+        }
+
+        .score-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .score-card.correct .score-value {
+            color: var(--success);
+        }
+
+        .score-card.incorrect .score-value {
+            color: var(--danger);
+        }
+
+        .score-card.unanswered .score-value {
+            color: var(--warning);
+        }
+
+        .score-title {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .answers-review {
+            text-align: left;
+            margin: 40px 0;
+        }
+
+        .review-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            text-align: center;
+        }
+
+        .review-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .review-item.correct {
+            border-left: 4px solid var(--success);
+        }
+
+        .review-item.incorrect {
+            border-left: 4px solid var(--danger);
+        }
+
+        .review-question {
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .review-answer {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .answer-label {
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .correct-answer .answer-label {
+            color: var(--success);
+        }
+
+        .user-answer.correct .answer-label {
+            color: var(--success);
+        }
+
+        .user-answer.incorrect .answer-label {
+            color: var(--danger);
+        }
+
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .copyright {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .collaboration {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .quiz-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .score-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .score-circle::before {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .score-percentage {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>Uji TKA SD/MI - Bahasa Inggris</h1>
+            </div>
+            <p class="subtitle">Tingkatkan kemampuan Bahasa Inggris dengan latihan soal yang interaktif</p>
+        </header>
+
+        <main>
+            <!-- Welcome Screen -->
+            <section id="welcome-screen" class="welcome-screen active card">
+                <div class="welcome-content">
+                    <h2>Selamat Datang di Simulasi Uji TKA</h2>
+                    <p>Uji kemampuan Bahasa Inggris Anda dengan 50 soal yang mencakup berbagai aspek pembelajaran. Dapatkan hasil instan dengan analisis mendalam untuk meningkatkan performa belajar Anda.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-list-ol"></i>
+                            <h3>50 Soal Lengkap</h3>
+                            <p>Multiple choice, matching, true/false, dan studi kasus</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Analisis Mendalam</h3>
+                            <p>Dapatkan laporan performa dengan statistik lengkap</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <h3>Waktu Fleksibel</h3>
+                            <p>Kerjakan dengan kecepatan Anda sendiri</p>
+                        </div>
+                    </div>
+                    
+                    <button id="start-btn" class="btn pulse">
+                        <i class="fas fa-play-circle"></i> Mulai Ujian
+                    </button>
+                </div>
+            </section>
+
+            <!-- Quiz Screen -->
+            <section id="quiz-screen" class="quiz-screen card">
+                <div class="quiz-header">
+                    <div class="question-counter">Soal <span id="current-question">1</span> dari <span id="total-questions">50</span></div>
+                    <div class="timer" id="timer">--:--</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                
+                <div class="question-container">
+                    <div class="stimulus" id="stimulus">
+                        <h3>Stimulus</h3>
+                        <p id="stimulus-text">Teks stimulus akan muncul di sini</p>
+                    </div>
+                    
+                    <h2 class="question-text" id="question-text">Pertanyaan akan muncul di sini</h2>
+                    
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be inserted here by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="quiz-controls">
+                    <button id="prev-btn" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Sebelumnya
+                    </button>
+                    <button id="next-btn" class="btn">
+                        Selanjutnya <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button id="submit-btn" class="btn btn-success">
+                        <i class="fas fa-paper-plane"></i> Kirim Jawaban
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Screen -->
+            <section id="results-screen" class="results-screen card">
+                <div class="results-content">
+                    <h2>Hasil Ujian Anda</h2>
+                    <p>Berikut adalah performa Anda dalam ujian Bahasa Inggris</p>
+                    
+                    <div class="score-container">
+                        <div class="score-circle" id="score-circle">
+                            <div class="score-text">
+                                <div class="score-percentage" id="score-percentage">0%</div>
+                                <div class="score-label">Nilai Akhir</div>
+                            </div>
+                        </div>
+                        
+                        <div class="score-details">
+                            <div class="score-card correct">
+                                <i class="fas fa-check-circle"></i>
+                                <div class="score-value" id="correct-answers">0</div>
+                                <div class="score-title">Jawaban Benar</div>
+                            </div>
+                            <div class="score-card incorrect">
+                                <i class="fas fa-times-circle"></i>
+                                <div class="score-value" id="incorrect-answers">0</div>
+                                <div class="score-title">Jawaban Salah</div>
+                            </div>
+                            <div class="score-card unanswered">
+                                <i class="fas fa-minus-circle"></i>
+                                <div class="score-value" id="unanswered-questions">0</div>
+                                <div class="score-title">Tidak Dijawab</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="answers-review">
+                        <h3 class="review-title">Review Jawaban</h3>
+                        <div id="answers-review-container">
+                            <!-- Review items will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button id="restart-btn" class="btn">
+                            <i class="fas fa-redo"></i> Ulangi Lagi
+                        </button>
+                        <button id="print-btn" class="btn btn-secondary">
+                            <i class="fas fa-print"></i> Cetak Hasil
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <i class="far fa-copyright"></i>
+                    <span>COPYRIGHT 2025</span>
+                </div>
+                <div class="collaboration">
+                    <span>Hasil kolaborasi</span>
+                    <span class="highlight">Ahmad Muafi</span>
+                    <span>x</span>
+                    <span class="highlight">hayyabina.id</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Data soal ujian
+        const questions = [
+            // Part A: Multiple Choice (20 Questions)
+            {
+                id: 1,
+                part: "A",
+                stimulus: "Read the text below carefully!\n\nMy Daily Routine\n\nHello! My name is Siti. I wake up at 5 a.m. every day. I take a bath and pray. Then, I have breakfast with my family. I go to school at 6.30 a.m. My school starts at 7 a.m. I study English, Math, and Science. I have lunch at 11 a.m. in the canteen. I go home at 1 p.m. In the evening, I do my homework and play with my brother. I go to bed at 9 p.m.",
+                question: "What time does Siti wake up?",
+                options: [
+                    { id: "a", text: "At 5 a.m." },
+                    { id: "b", text: "At 6 a.m." },
+                    { id: "c", text: "At 6.30 a.m." },
+                    { id: "d", text: "At 7 a.m." }
+                ],
+                correctAnswer: "a",
+                type: "multiple-choice"
+            },
+            {
+                id: 2,
+                part: "A",
+                stimulus: "Read the text below carefully!\n\nMy Daily Routine\n\nHello! My name is Siti. I wake up at 5 a.m. every day. I take a bath and pray. Then, I have breakfast with my family. I go to school at 6.30 a.m. My school starts at 7 a.m. I study English, Math, and Science. I have lunch at 11 a.m. in the canteen. I go home at 1 p.m. In the evening, I do my homework and play with my brother. I go to bed at 9 p.m.",
+                question: "Where does Siti have her lunch?",
+                options: [
+                    { id: "a", text: "At home" },
+                    { id: "b", text: "In the classroom" },
+                    { id: "c", text: "In the canteen" },
+                    { id: "d", text: "In the library" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 3,
+                part: "A",
+                stimulus: "Read the text below carefully!\n\nMy Daily Routine\n\nHello! My name is Siti. I wake up at 5 a.m. every day. I take a bath and pray. Then, I have breakfast with my family. I go to school at 6.30 a.m. My school starts at 7 a.m. I study English, Math, and Science. I have lunch at 11 a.m. in the canteen. I go home at 1 p.m. In the evening, I do my homework and play with my brother. I go to bed at 9 p.m.",
+                question: "What does Siti do in the evening?",
+                options: [
+                    { id: "a", text: "She studies at school." },
+                    { id: "b", text: "She has breakfast." },
+                    { id: "c", text: "She does homework and plays." },
+                    { id: "d", text: "She goes to the park." }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 4,
+                part: "A",
+                stimulus: "Look at the picture of a classroom!\n\n[MENTAL PICTURE: A whiteboard at the front. A teacher's desk with a computer and a chair. Five student desks. A bookshelf in the corner with many books. A clock on the wall showing 10 o'clock. A world map hanging on the wall.]",
+                question: "Where is the clock?",
+                options: [
+                    { id: "a", text: "On the teacher's desk" },
+                    { id: "b", text: "On the wall" },
+                    { id: "c", text: "On the bookshelf" },
+                    { id: "d", text: "On the floor" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 5,
+                part: "A",
+                stimulus: "Look at the picture of a classroom!\n\n[MENTAL PICTURE: A whiteboard at the front. A teacher's desk with a computer and a chair. Five student desks. A bookshelf in the corner with many books. A clock on the wall showing 10 o'clock. A world map hanging on the wall.]",
+                question: "What is on the teacher's desk?",
+                options: [
+                    { id: "a", text: "A globe and a pen" },
+                    { id: "b", text: "A computer and a chair" },
+                    { id: "c", text: "A map and some books" },
+                    { id: "d", text: "A bag and a pencil case" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 6,
+                part: "A",
+                stimulus: "Read the short dialogue!\n\nAndi: \"What is your hobby, Rina?\"\nRina: \"I like reading storybooks. What about you?\"\nAndi: \"My hobby is playing football. It is fun.\"",
+                question: "What is Rina's hobby?",
+                options: [
+                    { id: "a", text: "Playing football" },
+                    { id: "b", text: "Reading storybooks" },
+                    { id: "c", text: "Singing a song" },
+                    { id: "d", text: "Drawing a picture" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 7,
+                part: "A",
+                stimulus: "Read the short dialogue!\n\nAndi: \"What is your hobby, Rina?\"\nRina: \"I like reading storybooks. What about you?\"\nAndi: \"My hobby is playing football. It is fun.\"",
+                question: "Andi thinks playing football is...",
+                options: [
+                    { id: "a", text: "boring" },
+                    { id: "b", text: "difficult" },
+                    { id: "c", text: "fun" },
+                    { id: "d", text: "easy" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 8,
+                part: "A",
+                stimulus: "Read the announcement!\n\nANNOUNCEMENT\n\nTo: All Grade 4 Students\n\nThere will be an English Storytelling Competition.\nDay/Date: Saturday, 15 November 2024\nTime: 9 a.m. - 12 p.m.\nPlace: School Hall\n\nPlease register yourself to Mr. Budi by 10 November.",
+                question: "Who is the announcement for?",
+                options: [
+                    { id: "a", text: "All teachers" },
+                    { id: "b", text: "All students" },
+                    { id: "c", text: "All Grade 4 Students" },
+                    { id: "d", text: "Mr. Budi" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 9,
+                part: "A",
+                stimulus: "Read the announcement!\n\nANNOUNCEMENT\n\nTo: All Grade 4 Students\n\nThere will be an English Storytelling Competition.\nDay/Date: Saturday, 15 November 2024\nTime: 9 a.m. - 12 p.m.\nPlace: School Hall\n\nPlease register yourself to Mr. Budi by 10 November.",
+                question: "Where will the competition be held?",
+                options: [
+                    { id: "a", text: "In the classroom" },
+                    { id: "b", text: "In the canteen" },
+                    { id: "c", text: "In the school hall" },
+                    { id: "d", text: "In the library" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 10,
+                part: "A",
+                stimulus: "Read the text about an animal!\n\nThis animal lives in the ocean. It is big and intelligent. It is not a fish; it is a mammal. It can jump high. It has a blowhole on top of its head to breathe. It likes to eat fish. It is usually grey. People like to watch it in aquariums.",
+                question: "What is the animal being described?",
+                options: [
+                    { id: "a", text: "A shark" },
+                    { id: "b", text: "A whale" },
+                    { id: "c", text: "A dolphin" },
+                    { id: "d", text: "A turtle" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 11,
+                part: "A",
+                stimulus: "Read the text about an animal!\n\nThis animal lives in the ocean. It is big and intelligent. It is not a fish; it is a mammal. It can jump high. It has a blowhole on top of its head to breathe. It likes to eat fish. It is usually grey. People like to watch it in aquariums.",
+                question: "How does the animal breathe?",
+                options: [
+                    { id: "a", text: "With gills" },
+                    { id: "b", text: "With a blowhole" },
+                    { id: "c", text: "With lungs underwater" },
+                    { id: "d", text: "With its skin" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 12,
+                part: "A",
+                stimulus: "Read the text about an animal!\n\nThis animal lives in the ocean. It is big and intelligent. It is not a fish; it is a mammal. It can jump high. It has a blowhole on top of its head to breathe. It likes to eat fish. It is usually grey. People like to watch it in aquariums.",
+                question: "Where do people like to watch this animal?",
+                options: [
+                    { id: "a", text: "In the forest" },
+                    { id: "b", text: "In the mountains" },
+                    { id: "c", text: "In aquariums" },
+                    { id: "d", text: "In the river" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 13,
+                part: "A",
+                stimulus: "Look at the family tree!\n\n[MENTAL PICTURE: Grandfather & Grandmother -> Father & Mother -> (Children) Andi, Sari]",
+                question: "Andi is Sari's...",
+                options: [
+                    { id: "a", text: "father" },
+                    { id: "b", text: "brother" },
+                    { id: "c", text: "uncle" },
+                    { id: "d", text: "grandfather" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 14,
+                part: "A",
+                stimulus: "Look at the family tree!\n\n[MENTAL PICTURE: Grandfather & Grandmother -> Father & Mother -> (Children) Andi, Sari]",
+                question: "Who are the parents of Andi and Sari?",
+                options: [
+                    { id: "a", text: "Grandfather and Grandmother" },
+                    { id: "b", text: "Father and Mother" },
+                    { id: "c", text: "Uncle and Aunt" },
+                    { id: "d", text: "Teacher and Student" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 15,
+                part: "A",
+                stimulus: "Read the sentence!\n\n\"The children are playing happily in the park.\"",
+                question: "The underlined word 'happily' describes...",
+                options: [
+                    { id: "a", text: "the children" },
+                    { id: "b", text: "the park" },
+                    { id: "c", text: "how they are playing" },
+                    { id: "d", text: "when they are playing" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 16,
+                part: "A",
+                stimulus: "Read the sentence!\n\n\"The children are playing happily in the park.\"",
+                question: "What is the opposite of 'happily'?",
+                options: [
+                    { id: "a", text: "quickly" },
+                    { id: "b", text: "sadly" },
+                    { id: "c", text: "loudly" },
+                    { id: "d", text: "brightly" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 17,
+                part: "A",
+                stimulus: "Read the list of food and drinks!\n\n• Milk\n• Apple\n• Orange Juice\n• Carrot\n• Fried Chicken\n• Water",
+                question: "Which one is NOT a drink?",
+                options: [
+                    { id: "a", text: "Milk" },
+                    { id: "b", text: "Orange Juice" },
+                    { id: "c", text: "Carrot" },
+                    { id: "d", text: "Water" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 18,
+                part: "A",
+                stimulus: "Read the list of food and drinks!\n\n• Milk\n• Apple\n• Orange Juice\n• Carrot\n• Fried Chicken\n• Water",
+                question: "Which one is considered unhealthy if eaten too much?",
+                options: [
+                    { id: "a", text: "Apple" },
+                    { id: "b", text: "Carrot" },
+                    { id: "c", text: "Fried Chicken" },
+                    { id: "d", text: "Milk" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 19,
+                part: "A",
+                stimulus: "Read the short story!\n\nLina has a cat. Its name is Snowy because it is white like snow. Snowy has blue eyes and a long tail. It likes to drink milk and play with a ball of yarn. Lina loves Snowy very much.",
+                question: "Why is the cat named Snowy?",
+                options: [
+                    { id: "a", text: "Because it has blue eyes." },
+                    { id: "b", text: "Because it likes to play." },
+                    { id: "c", text: "Because it is white like snow." },
+                    { id: "d", text: "Because it has a long tail." }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 20,
+                part: "A",
+                stimulus: "Read the short story!\n\nLina has a cat. Its name is Snowy because it is white like snow. Snowy has blue eyes and a long tail. It likes to drink milk and play with a ball of yarn. Lina loves Snowy very much.",
+                question: "What does Snowy like to play with?",
+                options: [
+                    { id: "a", text: "A bone" },
+                    { id: "b", text: "A ball of yarn" },
+                    { id: "c", text: "A stick" },
+                    { id: "d", text: "A rope" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            // Part B: Complex Multiple Choice (More than One Answer) (10 Questions)
+            {
+                id: 21,
+                part: "B",
+                stimulus: "Read the text!\n\nHealthy Food\n\nWe need to eat healthy food to have a strong body. Healthy food includes fruits like apples and bananas. Vegetables like spinach and carrots are also good. We need to drink milk and water. We should not eat too much candy or fried food.",
+                question: "Which foods are mentioned as healthy in the text? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Apples" },
+                    { id: "b", text: "Candy" },
+                    { id: "c", text: "Spinach" },
+                    { id: "d", text: "Fried Chicken" }
+                ],
+                correctAnswer: ["a", "c"],
+                type: "multiple-answer"
+            },
+            {
+                id: 22,
+                part: "B",
+                stimulus: "Read the text!\n\nHealthy Food\n\nWe need to eat healthy food to have a strong body. Healthy food includes fruits like apples and bananas. Vegetables like spinach and carrots are also good. We need to drink milk and water. We should not eat too much candy or fried food.",
+                question: "What should we do based on the text? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Eat a lot of candy." },
+                    { id: "b", text: "Drink milk and water." },
+                    { id: "c", text: "Eat fruits and vegetables." },
+                    { id: "d", text: "Avoid too much fried food." }
+                ],
+                correctAnswer: ["b", "c", "d"],
+                type: "multiple-answer"
+            },
+            {
+                id: 23,
+                part: "B",
+                stimulus: "Look at the picture of a weather forecast for a week!\n\n[MENTAL PICTURE: Monday (Sunny), Tuesday (Cloudy), Wednesday (Rainy), Thursday (Rainy), Friday (Sunny)]",
+                question: "On which days will you need an umbrella? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Monday" },
+                    { id: "b", text: "Tuesday" },
+                    { id: "c", text: "Wednesday" },
+                    { id: "d", text: "Thursday" }
+                ],
+                correctAnswer: ["c", "d"],
+                type: "multiple-answer"
+            },
+            {
+                id: 24,
+                part: "B",
+                stimulus: "Look at the picture of a weather forecast for a week!\n\n[MENTAL PICTURE: Monday (Sunny), Tuesday (Cloudy), Wednesday (Rainy), Thursday (Rainy), Friday (Sunny)]",
+                question: "Which statements are TRUE based on the forecast? (Choose more than one)",
+                options: [
+                    { id: "a", text: "It will be sunny on Monday." },
+                    { id: "b", text: "It will be rainy on Tuesday." },
+                    { id: "c", text: "The weekend will be cloudy." },
+                    { id: "d", text: "Friday will be sunny." }
+                ],
+                correctAnswer: ["a", "d"],
+                type: "multiple-answer"
+            },
+            {
+                id: 25,
+                part: "B",
+                stimulus: "Read the rules in the library!\n\nLIBRARY RULES\n\n1. Be quiet.\n2. Do not eat or drink.\n3. Return books on time.\n4. Handle books with care.",
+                question: "What are you NOT allowed to do in the library? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Read a book" },
+                    { id: "b", text: "Make a noise" },
+                    { id: "c", text: "Eat a snack" },
+                    { id: "d", text: "Talk loudly" }
+                ],
+                correctAnswer: ["b", "c", "d"],
+                type: "multiple-answer"
+            },
+            {
+                id: 26,
+                part: "B",
+                stimulus: "Read the rules in the library!\n\nLIBRARY RULES\n\n1. Be quiet.\n2. Do not eat or drink.\n3. Return books on time.\n4. Handle books with care.",
+                question: "What are you supposed to do with the books? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Tear the pages." },
+                    { id: "b", text: "Handle them with care." },
+                    { id: "c", text: "Return them on time." },
+                    { id: "d", text: "Keep them forever." }
+                ],
+                correctAnswer: ["b", "c"],
+                type: "multiple-answer"
+            },
+            {
+                id: 27,
+                part: "B",
+                stimulus: "Read the shopping list!\n\nMom's Shopping List\n\n• Rice\n• Eggs\n• Milk\n• Bread\n• Tomatoes\n• Soap",
+                question: "Which items are food? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Rice" },
+                    { id: "b", text: "Soap" },
+                    { id: "c", text: "Eggs" },
+                    { id: "d", text: "Milk" }
+                ],
+                correctAnswer: ["a", "c", "d"],
+                type: "multiple-answer"
+            },
+            {
+                id: 28,
+                part: "B",
+                stimulus: "Read the shopping list!\n\nMom's Shopping List\n\n• Rice\n• Eggs\n• Milk\n• Bread\n• Tomatoes\n• Soap",
+                question: "Which items are not for eating? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Bread" },
+                    { id: "b", text: "Soap" },
+                    { id: "c", text: "Tomatoes" },
+                    { id: "d", text: "(None, all are for eating)" }
+                ],
+                correctAnswer: ["b"],
+                type: "multiple-answer"
+            },
+            {
+                id: 29,
+                part: "B",
+                stimulus: "Read the sentences about parts of the body!\n\nWe use our eyes to see.\nWe use our ears to hear.\nWe use our nose to smell.\nWe use our mouth to eat and talk.\nWe use our hands to write and hold things.",
+                question: "Which parts of the body are on your face? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Eyes" },
+                    { id: "b", text: "Ears" },
+                    { id: "c", text: "Hands" },
+                    { id: "d", text: "Nose" }
+                ],
+                correctAnswer: ["a", "b", "d"],
+                type: "multiple-answer"
+            },
+            {
+                id: 30,
+                part: "B",
+                stimulus: "Read the sentences about parts of the body!\n\nWe use our eyes to see.\nWe use our ears to hear.\nWe use our nose to smell.\nWe use our mouth to eat and talk.\nWe use our hands to write and hold things.",
+                question: "What do we use to sense things? (Choose more than one)",
+                options: [
+                    { id: "a", text: "Eyes (to see)" },
+                    { id: "b", text: "Ears (to hear)" },
+                    { id: "c", text: "Nose (to smell)" },
+                    { id: "d", text: "Hands (to touch)" }
+                ],
+                correctAnswer: ["a", "b", "c", "d"],
+                type: "multiple-answer"
+            },
+            // Part C: Matching (10 Questions)
+            {
+                id: 31,
+                part: "C",
+                stimulus: "Match the questions on the left with the correct answers on the right!",
+                question: "How are you?",
+                options: [
+                    { id: "a", text: "I am ten years old." },
+                    { id: "b", text: "My name is Budi." },
+                    { id: "c", text: "I am fine, thank you." },
+                    { id: "d", text: "I live in Jakarta." },
+                    { id: "e", text: "I am from Indonesia." }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 32,
+                part: "C",
+                stimulus: "Match the questions on the left with the correct answers on the right!",
+                question: "What is your name?",
+                options: [
+                    { id: "a", text: "I am ten years old." },
+                    { id: "b", text: "My name is Budi." },
+                    { id: "c", text: "I am fine, thank you." },
+                    { id: "d", text: "I live in Jakarta." },
+                    { id: "e", text: "I am from Indonesia." }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 33,
+                part: "C",
+                stimulus: "Match the questions on the left with the correct answers on the right!",
+                question: "How old are you?",
+                options: [
+                    { id: "a", text: "I am ten years old." },
+                    { id: "b", text: "My name is Budi." },
+                    { id: "c", text: "I am fine, thank you." },
+                    { id: "d", text: "I live in Jakarta." },
+                    { id: "e", text: "I am from Indonesia." }
+                ],
+                correctAnswer: "a",
+                type: "multiple-choice"
+            },
+            {
+                id: 34,
+                part: "C",
+                stimulus: "Match the questions on the left with the correct answers on the right!",
+                question: "Where do you live?",
+                options: [
+                    { id: "a", text: "I am ten years old." },
+                    { id: "b", text: "My name is Budi." },
+                    { id: "c", text: "I am fine, thank you." },
+                    { id: "d", text: "I live in Jakarta." },
+                    { id: "e", text: "I am from Indonesia." }
+                ],
+                correctAnswer: "d",
+                type: "multiple-choice"
+            },
+            {
+                id: 35,
+                part: "C",
+                stimulus: "Match the questions on the left with the correct answers on the right!",
+                question: "Where are you from?",
+                options: [
+                    { id: "a", text: "I am ten years old." },
+                    { id: "b", text: "My name is Budi." },
+                    { id: "c", text: "I am fine, thank you." },
+                    { id: "d", text: "I live in Jakarta." },
+                    { id: "e", text: "I am from Indonesia." }
+                ],
+                correctAnswer: "e",
+                type: "multiple-choice"
+            },
+            {
+                id: 36,
+                part: "C",
+                stimulus: "Match the words on the left with their opposites on the right!",
+                question: "Tall",
+                options: [
+                    { id: "a", text: "Slow" },
+                    { id: "b", text: "Short" },
+                    { id: "c", text: "Sad" },
+                    { id: "d", text: "Small" },
+                    { id: "e", text: "Cold" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 37,
+                part: "C",
+                stimulus: "Match the words on the left with their opposites on the right!",
+                question: "Big",
+                options: [
+                    { id: "a", text: "Slow" },
+                    { id: "b", text: "Short" },
+                    { id: "c", text: "Sad" },
+                    { id: "d", text: "Small" },
+                    { id: "e", text: "Cold" }
+                ],
+                correctAnswer: "d",
+                type: "multiple-choice"
+            },
+            {
+                id: 38,
+                part: "C",
+                stimulus: "Match the words on the left with their opposites on the right!",
+                question: "Fast",
+                options: [
+                    { id: "a", text: "Slow" },
+                    { id: "b", text: "Short" },
+                    { id: "c", text: "Sad" },
+                    { id: "d", text: "Small" },
+                    { id: "e", text: "Cold" }
+                ],
+                correctAnswer: "a",
+                type: "multiple-choice"
+            },
+            {
+                id: 39,
+                part: "C",
+                stimulus: "Match the words on the left with their opposites on the right!",
+                question: "Happy",
+                options: [
+                    { id: "a", text: "Slow" },
+                    { id: "b", text: "Short" },
+                    { id: "c", text: "Sad" },
+                    { id: "d", text: "Small" },
+                    { id: "e", text: "Cold" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            },
+            {
+                id: 40,
+                part: "C",
+                stimulus: "Match the words on the left with their opposites on the right!",
+                question: "Hot",
+                options: [
+                    { id: "a", text: "Slow" },
+                    { id: "b", text: "Short" },
+                    { id: "c", text: "Sad" },
+                    { id: "d", text: "Small" },
+                    { id: "e", text: "Cold" }
+                ],
+                correctAnswer: "e",
+                type: "multiple-choice"
+            },
+            // Part D: True - False (5 Questions)
+            {
+                id: 41,
+                part: "D",
+                stimulus: "Read the text below, then decide if the statements are TRUE or FALSE!\n\nText:\n\nBali is a beautiful island in Indonesia. It is famous for its beaches and temples. The weather in Bali is usually hot and sunny. Many tourists from other countries visit Bali every year. They enjoy the culture, the food, and the friendly people.",
+                question: "Bali is an island.",
+                options: [
+                    { id: "true", text: "TRUE" },
+                    { id: "false", text: "FALSE" }
+                ],
+                correctAnswer: "true",
+                type: "true-false"
+            },
+            {
+                id: 42,
+                part: "D",
+                stimulus: "Read the text below, then decide if the statements are TRUE or FALSE!\n\nText:\n\nBali is a beautiful island in Indonesia. It is famous for its beaches and temples. The weather in Bali is usually hot and sunny. Many tourists from other countries visit Bali every year. They enjoy the culture, the food, and the friendly people.",
+                question: "Bali is famous for its snow and mountains.",
+                options: [
+                    { id: "true", text: "TRUE" },
+                    { id: "false", text: "FALSE" }
+                ],
+                correctAnswer: "false",
+                type: "true-false"
+            },
+            {
+                id: 43,
+                part: "D",
+                stimulus: "Read the text below, then decide if the statements are TRUE or FALSE!\n\nText:\n\nBali is a beautiful island in Indonesia. It is famous for its beaches and temples. The weather in Bali is usually hot and sunny. Many tourists from other countries visit Bali every year. They enjoy the culture, the food, and the friendly people.",
+                question: "The weather in Bali is usually cold.",
+                options: [
+                    { id: "true", text: "TRUE" },
+                    { id: "false", text: "FALSE" }
+                ],
+                correctAnswer: "false",
+                type: "true-false"
+            },
+            {
+                id: 44,
+                part: "D",
+                stimulus: "Read the text below, then decide if the statements are TRUE or FALSE!\n\nText:\n\nBali is a beautiful island in Indonesia. It is famous for its beaches and temples. The weather in Bali is usually hot and sunny. Many tourists from other countries visit Bali every year. They enjoy the culture, the food, and the friendly people.",
+                question: "Only Indonesian tourists visit Bali.",
+                options: [
+                    { id: "true", text: "TRUE" },
+                    { id: "false", text: "FALSE" }
+                ],
+                correctAnswer: "false",
+                type: "true-false"
+            },
+            {
+                id: 45,
+                part: "D",
+                stimulus: "Read the text below, then decide if the statements are TRUE or FALSE!\n\nText:\n\nBali is a beautiful island in Indonesia. It is famous for its beaches and temples. The weather in Bali is usually hot and sunny. Many tourists from other countries visit Bali every year. They enjoy the culture, the food, and the friendly people.",
+                question: "Tourists enjoy the culture and food in Bali.",
+                options: [
+                    { id: "true", text: "TRUE" },
+                    { id: "false", text: "FALSE" }
+                ],
+                correctAnswer: "true",
+                type: "true-false"
+            },
+            // Part E: Case Study (5 Questions)
+            {
+                id: 46,
+                part: "E",
+                stimulus: "Read the conversation carefully!\n\nAt the Market\n\nMother: \"Ani, let's go to the market. We need to buy some fruits and vegetables.\"\nAni: \"Okay, Mom. What do we need to buy?\"\nMother: \"We need apples, oranges, carrots, and potatoes.\"\n(At a fruit stall)\nVendor: \"Good morning. What can I get for you?\"\nMother: \"Good morning. How much are the apples?\"\nVendor: \"They are thirty thousand rupiahs per kilogram.\"\nMother: \"That's fine. Please give me one kilogram. And how about the oranges?\"\nVendor: \"The oranges are twenty-five thousand rupiahs per kilogram.\"\nMother: \"Okay, I'll take one kilogram of oranges too.\"\nAni: \"Mom, the carrots look fresh.\"\nMother: \"You are right. Let's buy some carrots and potatoes too.\"",
+                question: "Where does the conversation take place?",
+                options: [
+                    { id: "a", text: "At school" },
+                    { id: "b", text: "At the market" },
+                    { id: "c", text: "At home" },
+                    { id: "d", text: "In the car" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 47,
+                part: "E",
+                stimulus: "Read the conversation carefully!\n\nAt the Market\n\nMother: \"Ani, let's go to the market. We need to buy some fruits and vegetables.\"\nAni: \"Okay, Mom. What do we need to buy?\"\nMother: \"We need apples, oranges, carrots, and potatoes.\"\n(At a fruit stall)\nVendor: \"Good morning. What can I get for you?\"\nMother: \"Good morning. How much are the apples?\"\nVendor: \"They are thirty thousand rupiahs per kilogram.\"\nMother: \"That's fine. Please give me one kilogram. And how about the oranges?\"\nVendor: \"The oranges are twenty-five thousand rupiahs per kilogram.\"\nMother: \"Okay, I'll take one kilogram of oranges too.\"\nAni: \"Mom, the carrots look fresh.\"\nMother: \"You are right. Let's buy some carrots and potatoes too.\"",
+                question: "How many kinds of fruit does Mother want to buy?",
+                options: [
+                    { id: "a", text: "One" },
+                    { id: "b", text: "Two" },
+                    { id: "c", text: "Three" },
+                    { id: "d", text: "Four" }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 48,
+                part: "E",
+                stimulus: "Read the conversation carefully!\n\nAt the Market\n\nMother: \"Ani, let's go to the market. We need to buy some fruits and vegetables.\"\nAni: \"Okay, Mom. What do we need to buy?\"\nMother: \"We need apples, oranges, carrots, and potatoes.\"\n(At a fruit stall)\nVendor: \"Good morning. What can I get for you?\"\nMother: \"Good morning. How much are the apples?\"\nVendor: \"They are thirty thousand rupiahs per kilogram.\"\nMother: \"That's fine. Please give me one kilogram. And how about the oranges?\"\nVendor: \"The oranges are twenty-five thousand rupiahs per kilogram.\"\nMother: \"Okay, I'll take one kilogram of oranges too.\"\nAni: \"Mom, the carrots look fresh.\"\nMother: \"You are right. Let's buy some carrots and potatoes too.\"",
+                question: "How much is one kilogram of oranges?",
+                options: [
+                    { id: "a", text: "Rp 25,000" },
+                    { id: "b", text: "Rp 30,000" },
+                    { id: "c", text: "Rp 35,000" },
+                    { id: "d", text: "Rp 40,000" }
+                ],
+                correctAnswer: "a",
+                type: "multiple-choice"
+            },
+            {
+                id: 49,
+                part: "E",
+                stimulus: "Read the conversation carefully!\n\nAt the Market\n\nMother: \"Ani, let's go to the market. We need to buy some fruits and vegetables.\"\nAni: \"Okay, Mom. What do we need to buy?\"\nMother: \"We need apples, oranges, carrots, and potatoes.\"\n(At a fruit stall)\nVendor: \"Good morning. What can I get for you?\"\nMother: \"Good morning. How much are the apples?\"\nVendor: \"They are thirty thousand rupiahs per kilogram.\"\nMother: \"That's fine. Please give me one kilogram. And how about the oranges?\"\nVendor: \"The oranges are twenty-five thousand rupiahs per kilogram.\"\nMother: \"Okay, I'll take one kilogram of oranges too.\"\nAni: \"Mom, the carrots look fresh.\"\nMother: \"You are right. Let's buy some carrots and potatoes too.\"",
+                question: "What does Ani say about the carrots?",
+                options: [
+                    { id: "a", text: "They are expensive." },
+                    { id: "b", text: "They look fresh." },
+                    { id: "c", text: "They are small." },
+                    { id: "d", text: "She doesn't like them." }
+                ],
+                correctAnswer: "b",
+                type: "multiple-choice"
+            },
+            {
+                id: 50,
+                part: "E",
+                stimulus: "Read the conversation carefully!\n\nAt the Market\n\nMother: \"Ani, let's go to the market. We need to buy some fruits and vegetables.\"\nAni: \"Okay, Mom. What do we need to buy?\"\nMother: \"We need apples, oranges, carrots, and potatoes.\"\n(At a fruit stall)\nVendor: \"Good morning. What can I get for you?\"\nMother: \"Good morning. How much are the apples?\"\nVendor: \"They are thirty thousand rupiahs per kilogram.\"\nMother: \"That's fine. Please give me one kilogram. And how about the oranges?\"\nVendor: \"The oranges are twenty-five thousand rupiahs per kilogram.\"\nMother: \"Okay, I'll take one kilogram of oranges too.\"\nAni: \"Mom, the carrots look fresh.\"\nMother: \"You are right. Let's buy some carrots and potatoes too.\"",
+                question: "From the conversation, we know that Mother is...",
+                options: [
+                    { id: "a", text: "angry" },
+                    { id: "b", text: "sad" },
+                    { id: "c", text: "shopping" },
+                    { id: "d", text: "cooking" }
+                ],
+                correctAnswer: "c",
+                type: "multiple-choice"
+            }
+        ];
+
+        // State aplikasi
+        let currentQuestionIndex = 0;
+        let userAnswers = Array(questions.length).fill(null);
+        let startTime = null;
+        let timerInterval = null;
+
+        // Elemen DOM
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultsScreen = document.getElementById('results-screen');
+        const startBtn = document.getElementById('start-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const printBtn = document.getElementById('print-btn');
+        const currentQuestionElement = document.getElementById('current-question');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const progressBar = document.getElementById('progress-bar');
+        const stimulusText = document.getElementById('stimulus-text');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const timerElement = document.getElementById('timer');
+        const scorePercentage = document.getElementById('score-percentage');
+        const correctAnswersElement = document.getElementById('correct-answers');
+        const incorrectAnswersElement = document.getElementById('incorrect-answers');
+        const unansweredQuestionsElement = document.getElementById('unanswered-questions');
+        const answersReviewContainer = document.getElementById('answers-review-container');
+        const scoreCircle = document.getElementById('score-circle');
+
+        // Event Listeners
+        startBtn.addEventListener('click', startQuiz);
+        prevBtn.addEventListener('click', showPreviousQuestion);
+        nextBtn.addEventListener('click', showNextQuestion);
+        submitBtn.addEventListener('click', submitQuiz);
+        restartBtn.addEventListener('click', restartQuiz);
+        printBtn.addEventListener('click', printResults);
+
+        // Fungsi untuk memulai kuis
+        function startQuiz() {
+            welcomeScreen.classList.remove('active');
+            quizScreen.classList.add('active');
+            
+            currentQuestionIndex = 0;
+            userAnswers = Array(questions.length).fill(null);
+            startTime = new Date();
+            
+            // Mulai timer
+            startTimer();
+            
+            // Tampilkan soal pertama
+            showQuestion(currentQuestionIndex);
+        }
+
+        // Fungsi untuk menampilkan soal
+        function showQuestion(index) {
+            const question = questions[index];
+            
+            // Update counter
+            currentQuestionElement.textContent = index + 1;
+            totalQuestionsElement.textContent = questions.length;
+            
+            // Update progress bar
+            progressBar.style.width = `${((index + 1) / questions.length) * 100}%`;
+            
+            // Tampilkan stimulus jika ada
+            if (question.stimulus) {
+                stimulusText.textContent = question.stimulus;
+                document.getElementById('stimulus').style.display = 'block';
+            } else {
+                document.getElementById('stimulus').style.display = 'none';
+            }
+            
+            // Tampilkan pertanyaan
+            questionText.textContent = question.question;
+            
+            // Tampilkan opsi jawaban
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach(option => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                
+                // Untuk multiple answer, periksa apakah opsi ini dipilih
+                const isSelected = userAnswers[index] && 
+                    (question.type === 'multiple-answer' 
+                        ? userAnswers[index].includes(option.id)
+                        : userAnswers[index] === option.id);
+                
+                if (isSelected) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.innerHTML = `
+                    <div class="option-marker">${option.id}</div>
+                    <div class="option-text">${option.text}</div>
+                `;
+                
+                optionElement.addEventListener('click', () => selectOption(option.id));
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Atur status tombol navigasi
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === questions.length - 1;
+            submitBtn.style.display = index === questions.length - 1 ? 'block' : 'none';
+        }
+
+        // Fungsi untuk memilih opsi jawaban
+        function selectOption(optionId) {
+            const question = questions[currentQuestionIndex];
+            
+            if (question.type === 'multiple-answer') {
+                // Untuk multiple answer, toggle pilihan
+                if (!userAnswers[currentQuestionIndex]) {
+                    userAnswers[currentQuestionIndex] = [];
+                }
+                
+                const currentAnswers = userAnswers[currentQuestionIndex];
+                const optionIndex = currentAnswers.indexOf(optionId);
+                
+                if (optionIndex === -1) {
+                    currentAnswers.push(optionId);
+                } else {
+                    currentAnswers.splice(optionIndex, 1);
+                }
+            } else {
+                // Untuk single answer, ganti pilihan
+                userAnswers[currentQuestionIndex] = optionId;
+            }
+            
+            // Refresh tampilan soal
+            showQuestion(currentQuestionIndex);
+        }
+
+        // Fungsi untuk menampilkan soal sebelumnya
+        function showPreviousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        // Fungsi untuk menampilkan soal berikutnya
+        function showNextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        // Fungsi untuk mengirim kuis
+        function submitQuiz() {
+            // Hentikan timer
+            clearInterval(timerInterval);
+            
+            // Hitung skor
+            const score = calculateScore();
+            
+            // Tampilkan hasil
+            showResults(score);
+        }
+
+        // Fungsi untuk menghitung skor
+        function calculateScore() {
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unansweredCount = 0;
+            
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                
+                if (!userAnswer || (Array.isArray(userAnswer) && userAnswer.length === 0)) {
+                    unansweredCount++;
+                    return;
+                }
+                
+                if (Array.isArray(question.correctAnswer)) {
+                    // Untuk multiple answer
+                    const correctAnswers = [...question.correctAnswer].sort().join('');
+                    const userAnswersSorted = [...userAnswer].sort().join('');
+                    
+                    if (correctAnswers === userAnswersSorted) {
+                        correctCount++;
+                    } else {
+                        incorrectCount++;
+                    }
+                } else {
+                    // Untuk single answer
+                    if (userAnswer === question.correctAnswer) {
+                        correctCount++;
+                    } else {
+                        incorrectCount++;
+                    }
+                }
+            });
+            
+            return {
+                correct: correctCount,
+                incorrect: incorrectCount,
+                unanswered: unansweredCount,
+                percentage: Math.round((correctCount / questions.length) * 100)
+            };
+        }
+
+        // Fungsi untuk menampilkan hasil
+        function showResults(score) {
+            quizScreen.classList.remove('active');
+            resultsScreen.classList.add('active');
+            
+            // Update elemen skor
+            scorePercentage.textContent = `${score.percentage}%`;
+            correctAnswersElement.textContent = score.correct;
+            incorrectAnswersElement.textContent = score.incorrect;
+            unansweredQuestionsElement.textContent = score.unanswered;
+            
+            // Animasikan lingkaran skor
+            setTimeout(() => {
+                scoreCircle.style.background = `conic-gradient(var(--primary) ${score.percentage}%, var(--dark) ${score.percentage}%)`;
+            }, 100);
+            
+            // Tampilkan review jawaban
+            displayAnswersReview();
+        }
+
+        // Fungsi untuk menampilkan review jawaban
+        function displayAnswersReview() {
+            answersReviewContainer.innerHTML = '';
+            
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = checkAnswerCorrect(question, userAnswer);
+                
+                const reviewItem = document.createElement('div');
+                reviewItem.className = `review-item ${isCorrect ? 'correct' : 'incorrect'}`;
+                
+                let userAnswerText = 'Tidak dijawab';
+                if (userAnswer) {
+                    if (Array.isArray(userAnswer)) {
+                        userAnswerText = userAnswer.map(id => {
+                            const option = question.options.find(opt => opt.id === id);
+                            return option ? `${id}. ${option.text}` : id;
+                        }).join(', ');
+                    } else {
+                        const option = question.options.find(opt => opt.id === userAnswer);
+                        userAnswerText = option ? `${userAnswer}. ${option.text}` : userAnswer;
+                    }
+                }
+                
+                let correctAnswerText;
+                if (Array.isArray(question.correctAnswer)) {
+                    correctAnswerText = question.correctAnswer.map(id => {
+                        const option = question.options.find(opt => opt.id === id);
+                        return option ? `${id}. ${option.text}` : id;
+                    }).join(', ');
+                } else {
+                    const option = question.options.find(opt => opt.id === question.correctAnswer);
+                    correctAnswerText = option ? `${question.correctAnswer}. ${option.text}` : question.correctAnswer;
+                }
+                
+                reviewItem.innerHTML = `
+                    <div class="review-question">${index + 1}. ${question.question}</div>
+                    <div class="review-answer user-answer ${isCorrect ? 'correct' : 'incorrect'}">
+                        <span class="answer-label">Jawaban Anda:</span>
+                        <span>${userAnswerText}</span>
+                    </div>
+                    <div class="review-answer correct-answer">
+                        <span class="answer-label">Jawaban Benar:</span>
+                        <span>${correctAnswerText}</span>
+                    </div>
+                `;
+                
+                answersReviewContainer.appendChild(reviewItem);
+            });
+        }
+
+        // Fungsi untuk memeriksa kebenaran jawaban
+        function checkAnswerCorrect(question, userAnswer) {
+            if (!userAnswer || (Array.isArray(userAnswer) && userAnswer.length === 0)) {
+                return false;
+            }
+            
+            if (Array.isArray(question.correctAnswer)) {
+                const correctAnswers = [...question.correctAnswer].sort().join('');
+                const userAnswersSorted = [...userAnswer].sort().join('');
+                return correctAnswers === userAnswersSorted;
+            } else {
+                return userAnswer === question.correctAnswer;
+            }
+        }
+
+        // Fungsi untuk memulai timer
+        function startTimer() {
+            startTime = new Date();
+            
+            timerInterval = setInterval(() => {
+                const now = new Date();
+                const elapsed = Math.floor((now - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Fungsi untuk mengulang kuis
+        function restartQuiz() {
+            resultsScreen.classList.remove('active');
+            welcomeScreen.classList.add('active');
+        }
+
+        // Fungsi untuk mencetak hasil
+        function printResults() {
+            window.print();
+        }
+
+        // Inisialisasi
+        totalQuestionsElement.textContent = questions.length;
+    </script>
+</body>
+</html>
